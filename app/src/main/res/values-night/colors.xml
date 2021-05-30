@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- For colored text; default is black/dark-gray (Day) or white/light-gray (Night) -->
+    <color name="colorPrimaryTextColored">@color/primaryLightColor</color>
+    <color name="colorSecondaryTextColored">@color/primaryColor</color>
+
+    <!-- Matching colored background -->
+    <color name="colorBackgroundColored">@color/primaryDarkColor</color>
+
+
+    <color name="colorDefaultBackground">@android:color/background_dark</color>
+</resources>

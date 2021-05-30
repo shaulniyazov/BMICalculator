@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/fab_margin"
+    android:layout_marginRight="@dimen/fab_margin"
+    android:layout_marginBottom="@dimen/fab_margin"
+    tools:showIn="@layout/main_include_both_cards_weight_height">
+
+    <EditText
+        android:id="@+id/input_height"
+        style="@style/multi_edit_text_style"
+        android:hint="@string/hint_height" />
+
+    <TextView
+        android:id="@+id/height"
+        style="@style/multi_text_view_style"
+        android:text="@string/height_string" />
+
+</androidx.cardview.widget.CardView>

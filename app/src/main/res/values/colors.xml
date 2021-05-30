@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primaryColor">#64b5f6</color>
+    <color name="primaryLightColor">#9be7ff</color>
+    <color name="primaryDarkColor">#2286c3</color>
+    <color name="secondaryColor">#ff9800</color>
+    <color name="secondaryLightColor">#ffc947</color>
+    <color name="secondaryDarkColor">#c66900</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#000000</color>
+
+    <!-- For colored text; default is black/dark-gray (Day) or white/light-gray (Night) -->
+    <color name="colorPrimaryTextColored">@color/primaryDarkColor</color>
+    <color name="colorSecondaryTextColored">@color/primaryColor</color>
+
+    <!-- Matching colored background -->
+    <color name="colorBackgroundColored">@color/primaryLightColor</color>
+
+    <!-- Used for the Splash Screen background -->
+    <color name="colorDefaultBackground">@android:color/background_light</color>
+</resources>
