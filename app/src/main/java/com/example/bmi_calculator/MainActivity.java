@@ -159,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
                         "calculation amount reset to " + mBMICalc.mCalculationsDone, Toast.LENGTH_SHORT).show();
                 return true;
             }
+
             case R.id.action_about: {
                 showAbout();
                 return true;
