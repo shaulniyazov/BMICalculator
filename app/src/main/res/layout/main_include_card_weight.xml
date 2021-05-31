@@ -11,15 +11,20 @@
     android:layout_marginBottom="@dimen/fab_margin"
     tools:showIn="@layout/main_include_both_cards_weight_height">
 
-    <TextView
-        android:id="@+id/weight"
-        style="@style/multi_text_view_style"
-        android:layout_marginBottom="@dimen/standard_margin"
-        android:text="@string/weight_string" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/input_weight"
-        style="@style/multi_edit_text_style"
-        android:hint="@string/hint_weight" />
+        <TextView
+            android:id="@+id/weight"
+            style="@style/multi_text_view_style"
+            android:text="@string/weight_string" />
+
+        <EditText
+            android:id="@+id/input_weight"
+            style="@style/multi_edit_text_style"
+            android:hint="@string/hint_weight" />
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -20,7 +20,9 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+//import static com.example.bmi_calculator.BMICalc.getJSONIntFromObject;
 import static com.example.bmi_calculator.BMICalc.getJSONStringFromObject;
+//import static com.example.bmi_calculator.BMICalc.getObjectFromJSONInt;
 import static com.example.bmi_calculator.BMICalc.getObjectFromJSONString;
 import static lib.Utils.showInfoDialog;
 
@@ -31,22 +33,28 @@ public class MainActivity extends AppCompatActivity {
     private BMICalc mBMICalc;  // model
     private EditText mEditTextHeight, mEditTextWeight;
     private Snackbar mSnackBar;
-    private int mCalculationsDone=0;
+    private int mCalculationsDone;
     private boolean mUseAutoSave;
-    private final String mKEY_GAME = "GAME";
+    private final String mKEY_GAME = "GAME", mKEY_CALCS_DONE = "CALCS_DONE";
     private String mKEY_AUTO_SAVE;
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(mKEY_GAME, getJSONStringFromObject(mBMICalc));
+        outState.putString(mKEY_GAME, mBMICalc.getJSONStringFromThis());
+        outState.putInt(mKEY_CALCS_DONE, mCalculationsDone);
+        //outState.putString(String.valueOf(mCalculationsDone), getJSONStringFromObject(mBMICalc));
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        mBMICalc = getObjectFromJSONString(savedInstanceState.getString(mKEY_GAME));
-        updateUI();
+
+        String restoredJSON = savedInstanceState.getString(mKEY_GAME);
+        mBMICalc = BMICalc.getObjectFromJSONString(restoredJSON);
+
+        mCalculationsDone = savedInstanceState.getInt(mKEY_CALCS_DONE);
+//        updateUI();
     }
 
     private void updateUI() {
@@ -57,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpToolbar();
@@ -76,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupFields() {
+        mCalculationsDone = 0;
+        mBMICalc = new BMICalc(1,1);
         mEditTextHeight = findViewById(R.id.input_height);
         mEditTextWeight = findViewById(R.id.input_weight);
         View layoutMain = findViewById(R.id.main_activity);
@@ -85,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
     private void handleFABClick() {
         Pair<String, String> heightAndWeight = new Pair<>(mEditTextHeight.getText().toString(),mEditTextWeight.getText().toString());
         if (isValidFormData(heightAndWeight)) {// check view/user
-//            mCalculationsDone++;
-//            System.out.println(mCalculationsDone);
-            mBMICalc.mCalculationsDone++;
+            mCalculationsDone++;
+            System.out.println(mCalculationsDone);
+            //mBMICalc.mCalculationsDone++;
             setModelFieldsHeightAndWeightTo(heightAndWeight);
             String msg = generateFormattedStringOfBMIAndGroupFromModel();
             showMessageWithLinkToResultsActivity(msg);
@@ -129,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
         bmiGroup = mBMICalc.getBmiGroup();
         return String.format(Locale.getDefault(),"%s %s; %s %s\n%s %d",getString(R.string.bmi),
                 bmiString,getString(R.string.bmi_group),
-                bmiGroup,getResources().getQuantityString(R.plurals.calcs_done, mCalculationsDone),
-                mBMICalc.getCalc());
+                bmiGroup,getResources().getQuantityString(R.plurals.calcs_done, mCalculationsDone), mCalculationsDone);
+                //mBMICalc.getCalc());
     }
 
     private void showMessageWithLinkToResultsActivity(String msg) {
@@ -154,12 +163,12 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.action_reset: {
-                mBMICalc.mCalculationsDone = 0;
+                mCalculationsDone = 0;
+//                mBMICalc.mCalculationsDone = 0;
                 Toast.makeText(getApplicationContext(),
-                        "calculation amount reset to " + mBMICalc.mCalculationsDone, Toast.LENGTH_SHORT).show();
+                        "calculation amount reset to " + mCalculationsDone, Toast.LENGTH_SHORT).show();
                 return true;
             }
-
             case R.id.action_about: {
                 showAbout();
                 return true;

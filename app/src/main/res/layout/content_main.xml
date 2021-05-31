@@ -16,7 +16,9 @@
 
     <include
         android:id="@+id/cards_weight_height"
-        layout="@layout/main_include_both_cards_weight_height" />
+        layout="@layout/main_include_both_cards_weight_height"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

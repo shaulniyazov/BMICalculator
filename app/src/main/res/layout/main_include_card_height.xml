@@ -9,14 +9,20 @@
     android:layout_marginBottom="@dimen/fab_margin"
     tools:showIn="@layout/main_include_both_cards_weight_height">
 
-    <EditText
-        android:id="@+id/input_height"
-        style="@style/multi_edit_text_style"
-        android:hint="@string/hint_height" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
+        <TextView
         android:id="@+id/height"
         style="@style/multi_text_view_style"
         android:text="@string/height_string" />
+
+        <EditText
+            android:id="@+id/input_height"
+            style="@style/multi_edit_text_style"
+            android:hint="@string/hint_height" />
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>
