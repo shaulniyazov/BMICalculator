@@ -47,4 +47,8 @@
     <style name="Theme.BMICalculator.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.BMICalculator.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.BMICalculator.NoActionBarSplashScreenTheme">
+        <item name="android:background">@mipmap/ic_launcher</item>
+    </style>
 </resources>
