@@ -1,3 +1,3 @@
 # BMICalculator
-BMI Calculator built in AndroidStudio as Final for class - Received an A.
+BMI Calculator built in Android Studio as a Final Project for the Andriod Development course - Received an A.
 
